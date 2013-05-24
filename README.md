@@ -5,7 +5,9 @@
 Add plugin to *project/plugins.sbt*:
 
 ```scala
-addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "0.3.0")
+resolvers += "snapshots @ sonatype" at "https://oss.sonatype.org/content/repositories/snapshots"
+
+addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "0.4.0-SNAPSHOT")
 ```
 
 For *.sbt* build definitions, inject the plugin settings in *build.sbt*:

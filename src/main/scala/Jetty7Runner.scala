@@ -48,6 +48,10 @@ class Jetty7Runner extends Runner {
     env.foreach(setEnvConfiguration(context, _))
     if(!scanDirectories.isEmpty)
       new Scanner(scanDirectories, scanInterval, () => reload(contextPath))
+    deployment.webDefault match {
+      case Some(webDefaultXml) => context.setDefaultsDescriptor(webDefaultXml.getAbsolutePath)
+      case _ =>
+    }
     contexts += contextPath -> (context, deployment)
     context
   }  

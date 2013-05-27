@@ -26,9 +26,10 @@ object WebappPlugin extends Plugin {
     auxCompile <<= auxCompileTask,
     scanInterval := 3,
     env := None,
-    deployment <<= (webappResources, fullClasspath in classpathConfig, scanDirectories, scanInterval, env) map {
-      (rs, cp, sd, si, env) =>
-      Deployment(rs, cp.map(_.data), sd, si, env)
+    webDefault := None,
+    deployment <<= (webappResources, fullClasspath in classpathConfig, scanDirectories, scanInterval, env, webDefault) map {
+      (rs, cp, sd, si, env, webDefault) =>
+      Deployment(rs, cp.map(_.data), sd, si, env, webDefault)
     }
   )
   def webappSettings0:Seq[Setting[_]] = webappSettings0(DefaultClasspathConf)

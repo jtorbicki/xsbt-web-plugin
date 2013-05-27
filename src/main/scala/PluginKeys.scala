@@ -8,7 +8,8 @@ case class Deployment(
   classpath: Seq[File],
   scanDirectories: Seq[File],
   scanInterval: Int,
-  env: Option[File]
+  env: Option[File],
+  webDefault: Option[File]
 )
 
 object PluginKeys extends Plugin {
@@ -33,5 +34,6 @@ object PluginKeys extends Plugin {
   lazy val scanDirectories = SettingKey[Seq[File]]("scan-directories")
   lazy val scanInterval = SettingKey[Int]("scan-interval")
   lazy val env = SettingKey[Option[File]]("env")
+  lazy val webDefault = SettingKey[Option[File]]("webDefault")
   lazy val deployment = TaskKey[Deployment]("deployment")
 }
